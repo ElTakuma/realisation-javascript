@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>Sapin</title>
+</head>
+<body>
+	<script>
+	let hauteur = 6;
+
+	function sapin(h) {
+		let pair = 0;
+		let middle = h;
+		let before = '';
+		let after = '';
+		let stringSpace = '';
+		let stringLine = '';
+
+		for (let line=1; line<h+1; line++){
+
+			for (let space = 0; space < middle-line; space++){
+				stringSpace += "&nbsp;&nbsp;";
+			}
+
+			if (line === 1){
+				before = "*";
+				// break;
+			} else {
+				for (let i=1; i<line+1; i++){
+
+						pair = i % 2;
+						if (pair === 1){
+							before += "*";
+							if ((i+1) < line+1) after += "*";
+						} else {
+							before += "o";
+							if ((i+1) < line+1) after += "o";
+						}
+					}
+			}
+			document.writeln(stringSpace + before + after + '<br>');
+			stringSpace = '';
+			stringLine = '';
+		}
+	}
+
+	sapin(hauteur);
+	</script>
+</body>
+</html>

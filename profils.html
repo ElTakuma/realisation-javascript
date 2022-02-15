@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Profiles</title>
+    <style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .grid-container-2 {
+        display: grid;
+        grid-template-columns: auto; 
+    }
+
+    .column-1 {
+        width: 100%;
+        border: 2px inset red;
+    }
+
+    .card img {
+        width: 100%;
+        align-self: start;
+        box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+
+    .card {
+        width: 80%;
+        /*box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;*/
+        box-shadow: rgb(38, 57, 77) 0 20px 30px -10px;
+        justify-self: center;
+        align-self: center;
+        position: relative;
+        margin: 1% auto 1% auto;
+        background-color: rgba(100, 100, 100, 0.1);
+    }
+
+     .card .card-detail {
+         /* border: 1px inset black; */
+         padding: 5px;
+         box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; 
+         background-color: transparent;
+         /* display: grid;
+         grid-template-columns: auto auto; */
+         /* display: flex; */
+         
+    }
+     .card .card-detail .label {
+         /* border: 1px inset black; */
+         box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; 
+         background:white;
+         padding: 5px;
+         font-weight: bolder;
+         width: auto;
+    }
+     .card .card-detail .data {
+         border-bottom: 5px inset white;
+         /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;  */
+         /* background:white; */
+         /* padding: 5px; */
+         /* font-weight: bolder; */
+         /* width: auto; */
+         word-wrap: break-word;
+         font-weight: normal;
+    }
+     .data-link {
+         /* border-bottom: 1px inset white; */
+         /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;  */
+         /* background:white; */
+         /* padding: 5px; */
+         /* font-weight: bolder; */
+         /* width: auto; */
+         word-wrap: break-word;
+         font-weight: normal;
+         border-radius: 15px;
+    }
+
+
+    
+    .card .card-image {
+         /* border: 1px inset black; */
+         
+
+    }
+
+    .filter-menu {
+        margin: -8px -8px -8px 0px;
+        background-color: red;
+    }
+
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (min-width: 100px) and (max-width: 600px) {
+        .grid-container {
+            grid-template-columns: 100%;
+            /* background-color: green; */
+        }
+
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) and (max-width: 768px) {
+        .grid-container {
+            grid-template-columns: auto auto;
+        }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) and (max-width: 992px) {
+        .grid-container {
+            grid-template-columns: 33% 33% 33%;
+        }
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+    @media only screen and (min-width: 992px) {
+        .grid-container {
+            grid-template-columns: 24% 24% 24% 24%;
+            /*grid-template-columns: 33% 33% 33%;*/
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <div class="filter-menu">
+        55
+    </div>
+    <div class="grid-container" id="list-content">
+        <!-- <div class="column-1">
+            <div class="card">
+                <div class="grid-container-2">
+                    <div class="card-image">
+                        <img class="" src="https://image.freepik.com/photos-gratuite/heureux-jeune-homme-africain-excite-croisant-bras-poitrine-regardant-camera_1262-12351.jpg" alt="">
+                    </div>
+                    <div class="card-detail">
+                        <div class="label">Nom:&nbsp; </div>
+                        <div class="data"> </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.getJSON('https://api.json-generator.com/templates/FFSF-7f2AWIt/data?access_token=8yvq0rgcjwh04jnfn04o6wtnkj08v69td89y5t1g', function(data) {
+                    /*optional stuff to do after success */
+                    var photographe = '';
+                    $.each(data.persons, function(index, val) {
+                         /* iterate through array or object */
+                         photographe += '<div class="column-1"> <div class="card"> <div class="grid-container-2"> <div class="card-image">';
+                         photographe += '<img class="" src="'+ val.imageUrl +'" alt="">';
+                         photographe += '</div><div class="card-detail">';
+                         photographe += '<div class="label">Nom:&nbsp; <span class="data"> '+ val.name +' </span></div>';
+                         photographe += '</div><div class="card-detail">';
+                         photographe += '<div class="label">Pays:&nbsp;  <span class="data"> '+ val.pays +' </span></div>';
+                         photographe += '</div><div class="card-detail">';
+                         photographe += '<div class="label">Ville:&nbsp;  <span class="data"> '+ val.ville +' </span></div>';
+                         photographe += '</div><div class="card-detail">';
+                         photographe += '<div class="label">Tarif :&nbsp;  <span class="data"> '+ val.prix +' </span></div>';
+                         photographe += '</div><div class="card-detail">';
+                         photographe += '<div class="label">Tags :&nbsp;';
+                         
+                         $.each(val.tags, function(index2, val2) {                            
+                            photographe += ' - <button type="button" id="'+ val2.tag +'" class="data-link" onclick="filterView(\'tags\', \''+ val2.tag +'\' )"> '+ val2.tag +' </button>';
+                         });
+
+                         photographe += '</div></div>';
+                     
+                         photographe += '</div></div></div>';
+                    });
+
+                    $('#list-content').append(photographe);
+            });
+        });
+
+        function filterView(typeFilter, value){
+            $.getJSON('https://api.json-generator.com/templates/FFSF-7f2AWIt/data?access_token=8yvq0rgcjwh04jnfn04o6wtnkj08v69td89y5t1g', function(data) {
+                    /*optional stuff to do after success */
+                    var photographe = '';
+                    var hasFund = false;
+                    
+                    $.each(data.persons, function(index, val) {
+                        if (typeFilter === 'tags') {
+                            $.each(val.tags, function(index2, val2) {
+                                if (val2.tag === value) {
+                                    hasFund = true;
+                                }
+                            });
+                            if (hasFund) {
+                                photographe += '<div class="column-1"> <div class="card"> <div class="grid-container-2"> <div class="card-image">';
+                                photographe += '<img class="" src="'+ val.imageUrl +'" alt="">';
+                                photographe += '</div><div class="card-detail">';
+                                photographe += '<div class="label">Nom:&nbsp; <span class="data"> '+ val.name +' </span></div>';
+                                photographe += '</div><div class="card-detail">';
+                                photographe += '<div class="label">Pays:&nbsp;  <span class="data"> '+ val.pays +' </span></div>';
+                                photographe += '</div><div class="card-detail">';
+                                photographe += '<div class="label">Ville:&nbsp;  <span class="data"> '+ val.ville +' </span></div>';
+                                photographe += '</div><div class="card-detail">';
+                                photographe += '<div class="label">Tarif :&nbsp;  <span class="data"> '+ val.prix +' </span></div>';
+                                photographe += '</div><div class="card-detail">';
+                                photographe += '<div class="label">Tags :&nbsp;';
+
+                                $.each(val.tags, function(index2, val2) {
+                                    photographe += ' - <button type="button" class="data-link"  onclick="filterView(\'tags\', \''+ val2.tag +'\' )"> '+ val2.tag +' </button>';
+                                });
+
+                                photographe += '</div></div>';
+                                photographe += '</div></div></div>';
+
+                                hasFund = false;
+                            }
+                        }
+                    });
+                    $('#list-content').fadeOut('slow', function() {
+                        $('#list-content').empty();
+                    });
+                    $('#list-content').fadeIn('slow', function() {
+                        $('#list-content').append(photographe);
+                    });
+                    
+                });
+        }
+    </script>
+</body>
+
+</html>
