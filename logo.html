@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>logo</title>
+</head>
+<body>
+<script>
+
+    function afficheLigneLogo(esp1, esp2, esp3) {
+        /**
+         * Declaration des Variables
+         */
+        let esp1_reste = esp1;
+        let esp2_reste = esp2 ;
+        let esp3_reste = esp3;
+
+        // recupère le reste d'espace entre element
+        let string_esp1 = '';
+        let string_esp2 = '';
+        let string_esp3 = '';
+
+
+        let hauteur = (esp1 * 2) - 1; // Hauteur des element en fonction du premier espace
+        let milieu_hauteur;
+
+        /**
+         * Teste de la paritée de la hauteur et transforme en impaire si paire
+         */
+        if (hauteur%2 === 0) {
+            milieu_hauteur = hauteur/2 + 1;
+            hauteur += 1;
+        } else {
+            milieu_hauteur = (hauteur - 1)/2 + 1;
+        }
+
+        esp2_reste--;
+
+        for (let i=1; i<=hauteur; i++){
+
+            let espace1 = 0; //nombre d'espace en chiffre
+            let espace2 = 0; //nombre d'espace en chiffre
+            let espace3 = 0; //nombre d'espace en chiffre
+
+            if (i < milieu_hauteur) {
+                for (let j=1; j<esp1_reste; j++){
+                    espace1++;
+                }
+                esp1_reste--;
+                esp2_reste++;
+                esp3_reste++;
+            }
+            if (i > milieu_hauteur) {
+                for (let l=1; l<esp1_reste; l++){
+                    espace1++;
+                }
+                esp1_reste++;
+                esp2_reste-=2;
+                esp3_reste--;
+            }
+            if (i === milieu_hauteur) {
+                esp1_reste++;
+                esp2_reste++;
+                esp3_reste++;
+            }
+
+            for (let i=1; i<=esp2_reste; i++){
+                espace2++;
+            }
+
+            for (let i=1; i<=esp3_reste; i++){
+                espace3++;
+            }
+
+
+            if (espace1 >= 0){
+                for (let k=0; k<espace1; k++){
+                    string_esp1 += "&nbsp;&nbsp;&nbsp;";
+                }
+            } else {
+                string_esp1 = "";
+            }
+
+            for (let k=0; k<espace2; k++){
+                if (i > milieu_hauteur) {
+                    string_esp2 += "&nbsp;&nbsp;";
+                } else string_esp2 += "&nbsp;&nbsp;";
+            }
+
+            for (let n=0; n<espace3; n++){
+                    string_esp3 += "&nbsp;&nbsp;&nbsp;";
+            }
+
+            document.write(string_esp1+"**"+string_esp2 + "**"+ string_esp3 +"**<br>");
+
+            string_esp1 = '';
+            string_esp2 = '';
+            string_esp3 = '';
+        }
+    }
+    afficheLigneLogo(6,10,2);
+</script>
+</body>
+</html>
